@@ -1,20 +1,19 @@
 package `if`
 
-import java.util.*
-
 /**
  * 2884
  */
 fun main() {
-    val sc = Scanner(System.`in`)
+    var (hour, minute) = readLine()!!.split(" ").map { it.toInt() }
+    minute -= 45
 
-    val hour = sc.nextInt()
-    val minute = sc.nextInt()
+    if (minute < 0) {
+        minute += 60
+        hour--
+    }
 
-    var resultHour = if (minute < 45) hour - 1 else hour
-    val resultMinute = if (minute < 45) 60 - (45 - minute) else minute - 45
+    if (hour < 0)
+        hour += 24
 
-    resultHour = if (resultHour < 0) 24 + resultHour else resultHour
-
-    println("$resultHour $resultMinute")
+    println("$hour $minute")
 }
