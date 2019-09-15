@@ -1,14 +1,16 @@
 package forStatement
 
-import java.util.*
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 /**
  * 10951
  */
 fun main() {
-    val sc = Scanner(System.`in`)
+    val bufferedReader = BufferedReader(InputStreamReader(System.`in`))
 
-    while (sc.hasNext()) {
-        println("${sc.nextInt() + sc.nextInt()}")
+    while (true) {
+        val readLine = bufferedReader.readLine()?:break
+        println("${readLine.split(" ").map { it.toInt() }.sum()}")
     }
 }
