@@ -1,26 +1,14 @@
 package string
 
 fun main() {
-    val map = readLine()!!
+    val alphabet = IntArray(26) {0}
+
+    readLine()!!
         .toUpperCase()
-        .toList()
-        .groupBy(keySelector = { k -> k }, valueTransform = { v -> v })
-        .mapValues { it.value.size }
+        .forEach { alphabet[it - 'A']++ }
 
-    var result = ""
-    var max = 0
-    for (key in map.keys) {
-        val value = map[key]!!
-        if (value > max) {
-            max = map[key]!!
-            result = key.toString()
-        } else if (value == max) {
-            result += key.toString()
-        }
-    }
+    val indexOfFirst = alphabet.indexOfFirst { it == alphabet.max() }
+    val indexOfLast = alphabet.indexOfLast { it == alphabet.max() }
 
-    if (result.length > 1)
-        result = "?"
-
-    println(result)
+    println("${if (indexOfFirst != indexOfLast) "?" else ('A' + indexOfFirst)}")
 }
