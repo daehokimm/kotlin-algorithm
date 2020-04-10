@@ -1,29 +1,25 @@
 package recursive
 
 import java.util.*
-import kotlin.math.pow
 
-val traceList = arrayListOf<String>()
+val sb = StringBuilder()
+var count = 0
 
 fun main() {
     val weight = Scanner(System.`in`).nextInt()
+    hanoi(weight, 1, 2, 3)
 
-    println("${2.0.pow(weight).toInt() - 1}")
-    hanoi(weight, 1, 3, 2)
-
-    traceList.forEach { println(it) }
+    println(count)
+    println(sb.toString())
 }
 
-fun hanoi(weight: Int, from: Int, to: Int, via: Int) {
+fun hanoi(weight: Int, from: Int, via: Int, to: Int) {
+    count++
     if (weight == 1) {
-        move(from, to)
+        sb.append("$from $to\n")
         return
     }
-    hanoi(weight - 1, from, via, to)
-    move(from, to)
-    hanoi(weight - 1, via, to, from)
-}
-
-fun move(from: Int, to: Int) {
-    traceList.add("$from $to")
+    hanoi(weight - 1, from, to, via)
+    sb.append("$from $to\n")
+    hanoi(weight - 1, via, from, to)
 }
