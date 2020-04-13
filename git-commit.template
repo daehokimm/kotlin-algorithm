@@ -1,7 +1,10 @@
-<label>: <title>
-# 제목에 .(마침표) 금지
-# solve : 문제
-# etc : 기타 변경사항
+
+# <label>: <title>
+# <label>
+## BOJ      : 백준
+## KAKAO    : 카카오
+## WOOWA    : 우아한 형제들
+# <title> 은 문제 번호 혹은 이름
 
 <description>
 # 간단한 풀이 방법
